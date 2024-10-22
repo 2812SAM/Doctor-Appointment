@@ -14,7 +14,7 @@ function TopDoctors() {
         <div className='flex flex-wrap items-center justify-center gap-6 pt-8'>
             {
                 doctors.slice(0,10).map((item,index) => (
-                    <div onClick={() => navigate(`/appoitment/${item._id}`)} className='sm:w-[230px] rounded-lg border border-[#C9D8FF] cursor-pointer hover:translate-y-[-10px] transition-all duration-500'>
+                    <div onClick={() => {navigate(`/appointment/${item._id}`);scrollTo(0,0)}} className='sm:w-[230px] rounded-lg border border-[#C9D8FF] cursor-pointer hover:translate-y-[-10px] transition-all duration-500'>
                         <img src={item.image} alt="" className='bg-[#C9D8FF] w-full object-cover rounded-lg'/>
                         <div className='p-4'>
                             <div className='flex gap-2 items-center'>

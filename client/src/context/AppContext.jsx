@@ -9,8 +9,6 @@ const AppContextProvider = (props) => {
         doctors,currencySymbol
     }
 
-   
-
     return (
         <AppContext.Provider value={value}>
             {props.children}
