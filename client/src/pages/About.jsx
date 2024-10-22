@@ -32,26 +32,26 @@ function About() {
         <p className='text-[14px] mt-16'>WHY <span className='font-semibold text-black'>CHOOSE US</span></p>
 
         <div className='mt-8 flex sm:flex-row flex-col'>
-          <div className='border w-full sm:w-1/3 p-8'>
+          <div className='border w-full sm:w-1/3 p-8 hover:bg-primary hover:text-white'>
             <p className='text-[10px] font-semibold'>EFFICIENCY:</p>
 
-            <p className='text-gray-600 text-[10px] mt-6'>
+            <p className=' text-[10px] mt-6'>
               Streamlined appointment scheduling that fits into your busy lifestyle.
             </p>
           </div>
 
-          <div className='border w-full sm:w-1/3 p-8'>
+          <div className='border w-full sm:w-1/3 p-8 hover:bg-primary hover:text-white'>
             <p className='text-[10px] font-semibold'>CONVINIENCE:</p>
 
-            <p className='text-gray-600 text-[10px] mt-6'>
+            <p className=' text-[10px] mt-6'>
               Access to a network of trusted healthcare professionals in your area.
             </p>
           </div>
 
-          <div className='border w-full sm:w-1/3 p-8'>
+          <div className='border w-full sm:w-1/3 p-8 hover:bg-primary hover:text-white'>
             <p className='text-[10px] font-semibold'>PERSONALIZATION:</p>
 
-            <p className='text-gray-600 text-[10px] mt-6'>
+            <p className=' text-[10px] mt-6'>
               Tailored recommendations and reminders to help you stay on top of your health.
             </p>
           </div>

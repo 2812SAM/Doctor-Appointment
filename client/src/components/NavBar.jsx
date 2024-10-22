@@ -12,25 +12,26 @@ function NavBar() {
     <div className='flex justify-between py-4 mb-5 border-b items-center text-sm'>
       <img onClick={() => navigate('/')} src={assets.logo} alt="" className='w-44 cursor-pointer'/>
 
-        <ul className='hidden md:flex items-start gap-5 cursor-pointer font-medium'>
-          <NavLink to='/'>
-            <li className='py-1 '>HOME</li>
-            <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-          </NavLink>
-          <NavLink to='/doctors'>
-            <li className='py-1 '>ALL DOCTORS</li>
-            <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-          </NavLink>
-          <NavLink to='/about'>
-            <li className='py-1 '>ABOUT</li>
-            <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-          </NavLink>
-          <NavLink to='/contact'>
-            <li className='py-1 '>CONTACT</li>
-            <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-          </NavLink>
-        </ul>
-  
+      <ul className='hidden md:flex items-start gap-5 cursor-pointer font-medium'>
+        <NavLink to='/'>
+          <li className='py-1 '>HOME</li>
+          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
+        </NavLink>
+        <NavLink to='/doctors'>
+          <li className='py-1 '>ALL DOCTORS</li>
+          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
+        </NavLink>
+        <NavLink to='/about'>
+          <li className='py-1 '>ABOUT</li>
+          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
+        </NavLink>
+        <NavLink to='/contact'>
+          <li className='py-1 '>CONTACT</li>
+          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
+        </NavLink>
+      </ul>
+
+      <div className='flex gap-6'>
         <div className='flex item-center gap-4'>
           {
             token 
@@ -52,7 +53,26 @@ function NavBar() {
                 Create account
               </button>
           }
+        </div>
+        <img
+          onClick={() => setShowMenu(true)}
+          className='w-6 md:hidden cursor-pointer'
+          src={assets.menu_icon}
+        />
+
+        <div className={`${showMenu ? 'fixed w-full' : 'h-0 w-0'} md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
+          <div className='flex items-center justify-between px-5 py-6'>
+            <img className='w-36' src={assets.logo} />
+            <img className='w-7' onClick={() => setShowMenu(false)} src={assets.cross_icon} />
           </div>
+          <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium'>
+            <NavLink to='/' onClick={() => setShowMenu(false)}><p className='px-4 py-2 rounded inline-block'>Home</p></NavLink>
+            <NavLink to='/doctors' onClick={() => setShowMenu(false)}><p className='px-4 py-2 rounded inline-block'>All Doctors</p></NavLink>
+            <NavLink to='/about' onClick={() => setShowMenu(false)}><p className='px-4 py-2 rounded inline-block'>About Us</p></NavLink>
+            <NavLink to='/contact' onClick={() => setShowMenu(false)}><p className='px-4 py-2 rounded inline-block'>Contact Us</p></NavLink>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }
