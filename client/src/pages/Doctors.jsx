@@ -29,7 +29,7 @@ function Doctors() {
           <button className={`inline-block py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={() => setShowFilter(prev => !prev)}>Filters</button>
         </div>
         
-        <div className={`${showFilter ? '' : 'hidden'}`}>
+        <div className={`${showFilter ? '' : 'hidden'} sm:block`}>
           <p onClick={() => speciality === 'General physician' ? navigate('/doctors') : navigate('/doctors/General physician')} 
             className={`p-2 mb-2 border border-gray-300 lg:w-[200px] rounded-lg cursor-pointer ${speciality === 'General physician' ? 'bg-[#C9D8FF]' : ''}`}>
               General physician
