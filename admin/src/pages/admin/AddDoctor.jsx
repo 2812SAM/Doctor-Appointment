@@ -7,13 +7,13 @@ import axios from 'axios'
 function AddDoctor() {
     const [docImg,setDocImg] = useState(false)
     const [name,setName] = useState('')
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
+    const [email,setEmail] = useState('@gmail.com')
+    const [password,setPassword] = useState('12345678')
     const [experience,setExperience] = useState('1Year')
     const [fees,setFees] = useState('')
     const [about,setAbout] = useState('')
     const [speciality,setSpeciality] = useState('General physician')
-    const [degree,setDegree] = useState('')
+    const [degree,setDegree] = useState('MBBS')
     const [address1,setAddress1] = useState('')
     const [address2,setAddress2] = useState('')
 
@@ -50,12 +50,24 @@ function AddDoctor() {
 
             if(data.success){
                 toast.success(data.message)
+                setDocImg(false)
+                setName('')
+                setEmail('@gmail.com')
+                setPassword('12345678')
+                setExperience('1Year')
+                setFees('')
+                setAbout('')
+                setSpeciality('General physician')
+                setDegree('MBBS')
+                setAddress1('')
+                setAddress2('')
             }else{
                 console.log("cant");
                 toast.error(data.message)
             } 
         }
         catch(err){
+            toast.error(err.message)
             console.log("error in sending data for the doctor from frontend : ",err);
         }
     }
