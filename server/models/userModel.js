@@ -28,11 +28,11 @@ const userSchema = new mongoose.Schema(
         },
         gender:{
             type:String,
-            default:"Not Selected"
+            default:"Male"
         },
         dob:{
             type: String,
-            default: "Not Selected"
+            default: "01-01-2000"
         },
         phone:{
             type: String,

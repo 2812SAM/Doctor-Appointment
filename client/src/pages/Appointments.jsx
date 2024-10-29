@@ -1,18 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { assets } from '../assets/assets_frontend/assets';
-import { useParams } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import RelatedDoctors from '../components/RelatedDoctors';
+import {toast} from 'react-toastify'
+import axios from 'axios';
 
 function Appointments() {
   const { docId } = useParams();
   const [doc, setDoc] = useState({});
-  const { doctors, currencySymbol } = useContext(AppContext);
   const [docSlot, setDocSlot] = useState([]);
   const [slotIdx, setSlotIdx] = useState(0);
   const [slotTime, setSlotTime] = useState('');
 
+  const { doctors, currencySymbol,backendUrl,token,getDoctorsData } = useContext(AppContext);
+
   const dayOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const navigate = useNavigate()
 
   const findDoc = () => {
     const doctor = doctors.find(doc => doc._id === docId);
@@ -57,6 +61,38 @@ function Appointments() {
 
       setDocSlot(prev => ([...prev, timeSlots]));
       console.log(docSlot.length);
+    }
+  }
+
+  const bookAppointment = async() => {
+    if(!token){
+      toast.warn('Login to book appoitment')
+      return navigate('/login')
+    }
+
+    try{
+      const date = docSlot[slotIdx][0].dateTime
+
+      let day = date.getDate()
+      let month = date.getMonth()+1
+      let year = date.getFullYear()
+
+      const slotDate = day+'_'+month+'_'+year
+
+      const {data} = await axios.post(backendUrl+'/api/user/bookAppointment',{docId,slotDate,slotTime},{headers:{token}});
+
+      if(data.success){
+        toast.success(data.message);
+        getDoctorsData()
+        navigate('/my-appointments')
+      }
+      else{
+        toast.error(data.message);
+      }
+    }
+    catch(err){
+      console.log(err);
+     toast.error(err.message) 
     }
   }
 
@@ -145,7 +181,7 @@ function Appointments() {
           </div>
 
           <div className='mt-4 flex justify-center sm:justify-normal'>
-            <button className='w-[170px] sm:w-[150px] md:w-[200px] lg:w-[250px] bg-primary p-2 rounded-full cursor-pointer text-white'>
+            <button onClick={bookAppointment} className='w-[170px] sm:w-[150px] md:w-[200px] lg:w-[250px] bg-primary p-2 rounded-full cursor-pointer text-white'>
               Book Appointment
             </button>
           </div>
