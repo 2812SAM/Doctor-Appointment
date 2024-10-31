@@ -18,8 +18,8 @@ function TopDoctors() {
                         <img src={item.image} alt="" className='bg-[#C9D8FF] w-full object-cover rounded-lg'/>
                         <div className='p-4'>
                             <div className='flex gap-2 items-center'>
-                                <div className='w-[5px] h-[5px] bg-green-600 rounded-full'></div>
-                                <p className='text-[10px] text-green-600'>Available</p>
+                                <div className={`w-[5px] h-[5px] ${item.available ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></div>
+                                <p className={`text-[10px] ${item.available ? 'text-green-500' : 'text-red-500'} `}>{item.available ? 'Available' : 'Not Available'}</p>
                             </div>
                             
                             <p className='font-semibold'>{item.name}</p>

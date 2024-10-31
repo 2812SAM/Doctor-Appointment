@@ -61,7 +61,9 @@ function DashBoard() {
                 {
                   item.cancelled
                   ? <p className='text-red-400 text-sm font-medium'>Cancelled</p>
-                  : <img onClick={() => cancelAppointment(item._id)} className='w-18 cursor-pointer' src={assets.cancel_icon} alt="" />
+                  : item.isCompleted 
+                    ? <p className='text-green-400 text-xs font-medium '>Completed</p>
+                    : <img onClick={() => cancelAppointment(item._id)} className='w-18 cursor-pointer' src={assets.cancel_icon} alt="" />
                 }
               </div>
             ))
